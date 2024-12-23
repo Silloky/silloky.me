@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface ButtonProps {
+    icon?: string;
+    label?: string;
+    labelPosition?: "left" | "right" | "under" | "above";
+    id: string;
+}
+
+const { icon, label, labelPosition, id } = Astro.props as ButtonProps;
+---
+
+<div id="buttonWrapper" x-data @click=`$dispatch('component-event', {id: '${id}', type: 'click'})`>
+    <Icon name={icon} />
+    {label && <span>{label}</span>}
+</div>
+
+<style>
+    #buttonWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        background-color: #f0f0f0;
+    }
+
+    #buttonWrapper:hover {
+        cursor: pointer;
+    }
+</style>

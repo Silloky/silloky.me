@@ -1,0 +1,67 @@
+---
+import Avatar from "../assets/avataaars.svg";
+import "../palette.css";
+import "@fontsource/gugi";
+
+import Button from "./Button.astro";
+---
+
+<nav>
+    <div class="leftsection">
+        <img src={Avatar.src} alt="" srcset="" width="60px" />
+        <Button icon="cuida:home-outline" label="Home" id="nav-home" />
+        <Button
+            icon="cuida:dashboard-outline"
+            label="Portfolio"
+            id="nav-portfolio"
+        />
+        <Button
+            icon="cuida:chatbubble-outline"
+            label="Blog"
+            id="nav-blog"
+        />
+    </div>
+    <div class="rightsection navicons">
+        <Button
+            icon="cuida:github-logo-outline"
+            id="nav-github"
+        />
+        <Button icon="cuida:mail-outline" id="nav-mail" />
+    </div>
+</nav>
+
+<style>
+    nav {
+        padding: 5px 50px;
+
+        background-color: var(--raisin);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        font-family: "Gugi", system-ui;
+    }
+
+    nav div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<script>
+    $("nav").on("component-event", function (evt) {
+        if (evt.originalEvent && (evt.originalEvent as CustomEvent).detail) {
+            const { id, type } = (evt.originalEvent as CustomEvent).detail;
+            if (type === "click") {
+                console.log(`Button with id ${id} was clicked`);
+            }
+        } else {
+            console.error(
+                "Event detail is missing or originalEvent is undefined",
+            );
+        }
+    });
+</script>
