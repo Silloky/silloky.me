@@ -2,8 +2,9 @@
 import Home from '../layouts/Home.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+var currentPage = "home";
 ---
 
-<BaseLayout>
+<BaseLayout currentPage={currentPage}>
 	<Home />
 </BaseLayout>

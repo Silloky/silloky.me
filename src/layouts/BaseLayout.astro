@@ -2,6 +2,8 @@
 import "../palette.css";
 
 import Navigation from "../components/Navigation.astro";
+
+const currentPage = Astro.props.currentPage;
 ---
 
 <!doctype html>
@@ -15,7 +17,7 @@ import Navigation from "../components/Navigation.astro";
 		<title>Silloky</title>
 	</head>
 	<body>
-		<Navigation />
+		<Navigation currentPage={currentPage}/>
 		<slot />
 	</body>
 </html>

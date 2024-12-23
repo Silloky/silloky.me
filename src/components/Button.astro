@@ -6,27 +6,58 @@ interface ButtonProps {
     label?: string;
     labelPosition?: "left" | "right" | "under" | "above";
     id: string;
+    active?: boolean;
 }
 
-const { icon, label, labelPosition, id } = Astro.props as ButtonProps;
+const {
+    icon,
+    label,
+    labelPosition,
+    id,
+    active = false,
+} = Astro.props as ButtonProps;
 ---
 
-<div id="buttonWrapper" x-data @click=`$dispatch('component-event', {id: '${id}', type: 'click'})`>
-    <Icon name={icon} />
+<div
+    class:list={["buttonWrapper", { active: active }]}
+    x-data
+    @click=`$dispatch('component-event', {id: '${id}', type: 'click'})`
+    x-init="$el.style.visibility = 'visible'"
+>
+    <Icon name={icon} size={label ? 20 : 24} />
     {label && <span>{label}</span>}
 </div>
 
 <style>
-    #buttonWrapper {
+    .buttonWrapper {
+        color: white;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100px;
-        height: 100px;
-        background-color: #f0f0f0;
+        padding: 10px;
+        margin: 10px 7px;
+        border-radius: 5px;
+        visibility: hidden;
     }
 
-    #buttonWrapper:hover {
+    .buttonWrapper.active {
+        color: var(--goldenrod);
+    }
+
+    .buttonWrapper.active svg {
+        path {
+            fill: var(--goldenrod);
+        }
+    }
+
+    .buttonWrapper:hover {
         cursor: pointer;
+        background-color: var(--raisin);
+        transition: background-color 0.1s;
+    }
+
+    .buttonWrapper span {
+        margin-top: 5px;
     }
 </style>
