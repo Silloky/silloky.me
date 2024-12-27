@@ -15,8 +15,10 @@
     "@iconify-json/fluent": "^1.2.11",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.14.7",
+    "animejs": "^3.2.2",
     "astro": "^5.1.1",
-    "astro-icon": "^1.1.4"
+    "astro-icon": "^1.1.4",
+    "typeit": "^8.8.7"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.32"
