@@ -10,8 +10,8 @@ var currentPage = "home";
             <h1 id="hero-name"></h1>
             <h2 id="hero-role"></h2>
         </div>
-        <div id="see-more" style="opacity: 0;">
-            <span>Scroll to see more</span>
+        <div id="learn-more" style="opacity: 0;">
+            <span>Scroll to learn more</span>
             <Icon name="cuida:caret-down-outline" size="100%" />
         </div>
     </div>
@@ -52,19 +52,21 @@ var currentPage = "home";
         font-size: 4.5rem;
         font-weight: 700;
         margin: 0;
+        text-shadow: 0px 0px 0.6ch #ffffffbd;
     }
 
     h2#hero-role {
         font-size: 2.5rem;
         font-weight: 500;
         text-align: center;
+        text-shadow: 0px 0px 1.2ch white;
     }
 
     #hero-role div {
         /* SEE INLINE CSS BELOW */
     }
 
-    #see-more {
+    #learn-more {
         font-family: "Gugi", system-ui;
         display: grid;
         grid-template-rows: 1fr 2fr;
@@ -75,7 +77,8 @@ var currentPage = "home";
     }
 
     @keyframes arrow-bounce {
-        0%, 100% {
+        0%,
+        100% {
             transform: translateY(0);
         }
         50% {
@@ -83,14 +86,13 @@ var currentPage = "home";
         }
     }
 
-    #see-more svg {
+    #learn-more svg {
         animation: arrow-bounce 2s infinite;
     }
 
-    #see-more:hover {
+    #learn-more:hover {
         cursor: pointer;
     }
-
 </style>
 
 <style is:global>
@@ -111,9 +113,9 @@ var currentPage = "home";
     import TypeIt from "typeit";
 
     var heroGradients = {
-        student: "linear-gradient(to right, #c0392b, #8e44ad);",
-        dev: "linear-gradient(to right, #283c86, #45a247)",
-        physicist: "linear-gradient(to right, #f2994a, #f2c94c)",
+        student: "linear-gradient(to right, #de2b19, #860db9)",
+        dev: "linear-gradient(to right, #264ddc, #0bd10f)",
+        physicist: "linear-gradient(to right, #f66c06, #ffc207)",
     };
 
     async function heroAnimation() {
@@ -129,17 +131,17 @@ var currentPage = "home";
                         afterComplete: resolve,
                     })
                         .type(
-                            `I'm a <span style='background: ${heroGradients.student}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>student.</span>`,
+                            `I'm a <span style='background: ${heroGradients.student}; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: -1ch -0.2ch 45px #c0392b, 2ch 0.1ch 45px #8e44ad;'>student.</span>`,
                         )
                         .pause(1000)
                         .delete(8, { speed: 40 })
                         .type(
-                            `<span style='background: ${heroGradients.dev}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>developer.</span>`,
+                            `<span style='background: ${heroGradients.dev}; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: -1ch -0.2ch 45px #003cff, 2ch 0.2ch 45px #0cde0ce8;'>developer.</span>`,
                         )
                         .pause(1000)
                         .delete(12, { speed: 40 })
                         .type(
-                            `an <span style='background: ${heroGradients.physicist}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>aspiring physicist.</span>`,
+                            `an <span style='background: ${heroGradients.physicist}; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: -1.2ch 0ch 45px #f57815, 2ch 0.2ch 45px #f3d700e0;'>aspiring physicist.</span>`,
                         )
                         .pause(1000)
                         .go()
@@ -156,7 +158,7 @@ var currentPage = "home";
 
     heroAnimation().then(() => {
         console.log("Hero animation complete");
-        $("#see-more").css("opacity", "1");
+        $("#learn-more").css("opacity", "1");
         $("nav").removeClass("hidden-nav");
     });
 </script>
