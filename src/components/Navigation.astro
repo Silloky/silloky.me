@@ -21,19 +21,25 @@ const currentPage = Astro.props.currentPage;
             icon="cuida:home-outline"
             label="Home"
             id="nav-home"
-            active={currentPage == "home" ? true : false }
+            active={currentPage == "home" ? true : false}
+        />
+        <Button
+            icon="cuida:document-outline"
+            label="Resume"
+            id="nav-resume"
+            active={currentPage == "resume" ? true : false}
         />
         <Button
             icon="cuida:dashboard-outline"
             label="Portfolio"
             id="nav-portfolio"
-            active={currentPage == "portfolio" ? true : false }
+            active={currentPage == "portfolio" ? true : false}
         />
         <Button
             icon="cuida:chatbubble-outline"
             label="Blog"
             id="nav-blog"
-            active={currentPage == "blog" ? true : false }
+            active={currentPage == "blog" ? true : false}
         />
     </div>
     <div class="rightsection navicons">
@@ -78,6 +84,9 @@ const currentPage = Astro.props.currentPage;
                 switch (id) {
                     case "nav-home":
                         window.location.href = "/";
+                        break;
+                    case "nav-resume":
+                        window.location.href = "/resume";
                         break;
                     case "nav-portfolio":
                         window.location.href = "/portfolio";
