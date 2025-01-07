@@ -52,7 +52,6 @@ const currentPage = Astro.props.currentPage;
     nav {
         padding: 5px 10px 5px 50px;
 
-        background-color: var(--licorice);
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -61,6 +60,13 @@ const currentPage = Astro.props.currentPage;
         box-sizing: border-box;
 
         font-family: "Gugi", system-ui;
+
+        position: sticky;
+        top: 0;
+        width: 100%;
+        backdrop-filter: blur(20px);
+        border-bottom: var(--raisin) 1px solid;
+        z-index: 20;
     }
 
     nav div {
