@@ -1,0 +1,25 @@
+<style is:global>
+
+    nav {
+        transition :
+            border-bottom 1s ease-in-out,
+            backdrop-filter 1s ease-in-out;
+    }
+
+    nav * {
+        opacity: 1;
+        pointer-events: all;
+        transition: opacity 1s ease-in-out
+    }
+
+    nav.hidden-nav {
+        border-bottom: none!important;
+        backdrop-filter: none!important;
+    }
+
+    nav.hidden-nav * {
+        opacity: 0;
+        pointer-events: none;
+        /* transition: opacity 1s ease-in-out, */
+    }
+</style>
