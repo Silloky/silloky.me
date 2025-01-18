@@ -150,6 +150,17 @@ import "../components/hideNavInitially.astro";
         border: 2px solid var(--raisin);
     }
 
+    .presentation-section::before {
+        content: "hello";
+        display: block;
+        height: 40px;
+        width: 40px;
+        background-color: pink;
+        position: absolute;
+        left: 200px;
+        top: 60px;
+    }
+
     .section-overview {
         display: flex;
         justify-content: center;
