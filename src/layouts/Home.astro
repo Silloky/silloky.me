@@ -3,7 +3,6 @@ import { Icon } from "astro-icon/components";
 import Avatar from "../assets/avataaars.svg";
 
 import "../components/hideNavInitially.astro";
-
 ---
 
 <div id="home-container">
@@ -24,7 +23,7 @@ import "../components/hideNavInitially.astro";
                 <!-- <img src={Avatar.src} alt="My avatar" /> -->
                 <div class="overview-text">
                     <h2>About Me</h2>
-                    <h3>Check out my <a href="./resume">resume</a></h3>
+                    <a href="./resume">Check out my resume</a>
                 </div>
             </div>
             <div class="section-information">about-info</div>
@@ -34,9 +33,7 @@ import "../components/hideNavInitially.astro";
                 <Icon name={"fluent-color:document-folder-20"} size="100%" />
                 <div class="overview-text">
                     <h2>Portfolio</h2>
-                    <h3>
-                        Go to the <a href="./portfolio">dedicated page</a>
-                    </h3>
+                    <a href="./portfolio">Go to the dedicated page</a>
                 </div>
             </div>
             <div class="section-information">resent-info</div>
@@ -47,7 +44,7 @@ import "../components/hideNavInitially.astro";
                 <Icon name={"fluent-color:news-20"} size="100%" />
                 <div class="overview-text">
                     <h2>Blog</h2>
-                    <h3><a href="./blog">Check out all the posts</a></h3>
+                    <a href="./blog">Check out all the posts</a>
                 </div>
             </div>
             <div class="section-information">blog info</div>
@@ -151,14 +148,14 @@ import "../components/hideNavInitially.astro";
     }
 
     .presentation-section::before {
-        content: "hello";
-        display: block;
-        height: 40px;
-        width: 40px;
-        background-color: pink;
+        content: "";
         position: absolute;
-        left: 200px;
-        top: 60px;
+        top: 10%;
+        height: 80%;
+        left: 6%;
+        width: 22%;
+        z-index: -1;
+        filter: blur(50px);
     }
 
     .section-overview {
@@ -198,32 +195,28 @@ import "../components/hideNavInitially.astro";
         z-index: -1;
     }
 
-    .overview-text h3 {
+    .overview-text a {
         padding: 12px;
         border-radius: 16px;
         border: 1px solid var(--goldenrod);
         font-weight: 700;
         color: var(--goldenrod);
         margin: 15px 0 0;
-    }
-
-    .overview-text a {
-        color: inherit;
+        font-size: 1.1em;
         text-decoration: none;
-        font-weight: 700;
     }
 
-    /* #about-me::before {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        content: "";
-        background-color: var(--goldenrod);
-        filter: blur(80px);
-        left: 150px;
-        top: 50px;
-        z-index: -1;
-    } */
+    #about-me::before {
+        background: #4b271ba6;
+    }
+
+    #portfolio-presentation::before {
+        background: #342d53a6;
+    }
+
+    #blog-presentation::before {
+        background: #08354ba6;
+    }
 </style>
 
 <script>
