@@ -3,6 +3,9 @@ import { Icon } from "astro-icon/components";
 import Avatar from "../assets/avataaars.svg";
 
 import "../components/hideNavInitially.astro";
+import PresentationLayout from "./Presentation.astro";
+import PresentationSection from "../components/PresentationSection.astro";
+import Presentation from "./Presentation.astro";
 ---
 
 <div id="home-container">
@@ -16,40 +19,35 @@ import "../components/hideNavInitially.astro";
             <Icon name="cuida:caret-down-outline" size="100%" />
         </div>
     </div>
-    <div id="home-presentation">
-        <div class="presentation-section" id="about-me">
-            <div class="section-overview">
-                <Icon name={"fluent-color:receipt-20"} size="100%" />
-                <!-- <img src={Avatar.src} alt="My avatar" /> -->
-                <div class="overview-text">
-                    <h2>About Me</h2>
-                    <a href="./resume">Check out my resume</a>
-                </div>
-            </div>
-            <div class="section-information">about-info</div>
-        </div>
-        <div class="presentation-section" id="portfolio-presentation">
-            <div class="section-overview">
-                <Icon name={"fluent-color:document-folder-20"} size="100%" />
-                <div class="overview-text">
-                    <h2>Portfolio</h2>
-                    <a href="./portfolio">Go to the dedicated page</a>
-                </div>
-            </div>
-            <div class="section-information">resent-info</div>
-        </div>
-        <div class="presentation-section" id="blog-presentation">
-            <div class="section-overview">
-                <!-- <img src={Avatar.src} alt="My avatar" /> -->
-                <Icon name={"fluent-color:news-20"} size="100%" />
-                <div class="overview-text">
-                    <h2>Blog</h2>
-                    <a href="./blog">Check out all the posts</a>
-                </div>
-            </div>
-            <div class="section-information">blog info</div>
-        </div>
-    </div>
+    <Presentation id="home-presentation">
+        <PresentationSection
+            sectionTitle="About me"
+            iconId="fluent-color:receipt-20"
+            haloColor="#4b271ba6"
+            buttonText="Check out my resume"
+            buttonHref="./resume"
+        >
+            hello there
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle="Portfolio"
+            iconId="fluent-color:document-folder-20"
+            haloColor="#342d53a6"
+            buttonText="Go to the dedicated page"
+            buttonHref="./portfolio"
+        >
+            portfolio info
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle="Blog"
+            iconId="fluent-color:news-20"
+            haloColor="#08354ba6"
+            buttonText="Check out all the posts"
+            buttonHref="./blog"
+        >
+            blog info
+        </PresentationSection>
+    </Presentation>
 </div>
 
 <style>
@@ -124,98 +122,6 @@ import "../components/hideNavInitially.astro";
 
     #learn-more:hover {
         cursor: pointer;
-    }
-
-    #home-presentation {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        margin: 15vh 5%;
-        gap: 15vh;
-    }
-
-    .presentation-section {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        backdrop-filter: blur(15px);
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        padding: 20px;
-        color: white;
-        /* min-height: 60vh; */
-        background: color-mix(in srgb, var(--raisin), transparent 76%);
-        border: 2px solid var(--raisin);
-    }
-
-    .presentation-section::before {
-        content: "";
-        position: absolute;
-        top: 10%;
-        height: 80%;
-        left: 6%;
-        width: 22%;
-        z-index: -1;
-        filter: blur(50px);
-    }
-
-    .section-overview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .section-overview svg {
-        width: 70%;
-        min-height: 27vh;
-    }
-
-    .overview-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-family: "Gugi";
-        margin-bottom: 25px;
-    }
-
-    .overview-text h2 {
-        font-size: 2em;
-        margin: 0;
-    }
-
-    .overview-text h2::after {
-        content: "";
-        display: block;
-        height: 0.4em;
-        background: color-mix(in srgb, var(--goldenrod), transparent 20%);
-        transform: skew(15deg) translate(-3px, -14px);
-        position: relative;
-        z-index: -1;
-    }
-
-    .overview-text a {
-        padding: 12px;
-        border-radius: 16px;
-        border: 1px solid var(--goldenrod);
-        font-weight: 700;
-        color: var(--goldenrod);
-        margin: 15px 0 0;
-        font-size: 1.1em;
-        text-decoration: none;
-    }
-
-    #about-me::before {
-        background: #4b271ba6;
-    }
-
-    #portfolio-presentation::before {
-        background: #342d53a6;
-    }
-
-    #blog-presentation::before {
-        background: #08354ba6;
     }
 </style>
 

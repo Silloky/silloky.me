@@ -1,0 +1,101 @@
+---
+import { Icon } from "astro-icon/components";
+
+const {
+    sectionTitle = "Section",
+    iconId = "fluent-color:star-24",
+    haloColor = "pink",
+    buttonText = "",
+    buttonHref = "",
+} = Astro.props;
+
+const showButton = buttonText.length > 0;
+---
+
+<div class="presentation-section" id={sectionTitle.toLowerCase().replace(" ", "-") + "-section"}>
+    <div class="section-overview">
+        <Icon name={iconId} size="100%" />
+        <div class="overview-text">
+            <h2>{sectionTitle}</h2>
+            {buttonText && <a href={buttonHref}>{buttonText}</a>}
+        </div>
+    </div>
+    <div class="section-information">
+        <slot />
+    </div>
+</div>
+
+<style define:vars={{ haloColor }}>
+    .presentation-section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        color: white;
+        /* min-height: 60vh; */
+        background: color-mix(in srgb, var(--raisin), transparent 76%);
+        border: 2px solid var(--raisin);
+    }
+
+    .presentation-section::before {
+        content: "";
+        position: absolute;
+        top: 10%;
+        height: 80%;
+        left: 6%;
+        width: 22%;
+        z-index: -1;
+        filter: blur(50px);
+        background-color: var(--haloColor);
+    }
+
+    .section-overview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .section-overview svg {
+        width: 70%;
+        min-height: 27vh;
+    }
+
+    .overview-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: "Gugi";
+        margin-bottom: 25px;
+    }
+
+    .overview-text h2 {
+        font-size: 2em;
+        margin: 0;
+    }
+
+    .overview-text h2::after {
+        content: "";
+        display: block;
+        height: 0.4em;
+        background: color-mix(in srgb, var(--goldenrod), transparent 20%);
+        transform: skew(15deg) translate(-3px, -14px);
+        position: relative;
+        z-index: -1;
+    }
+
+    .overview-text a {
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid var(--goldenrod);
+        font-weight: 700;
+        color: var(--goldenrod);
+        margin: 15px 0 0;
+        font-size: 1.1em;
+        text-decoration: none;
+    }
+</style>
