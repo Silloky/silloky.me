@@ -1,0 +1,15 @@
+---
+const {id} = Astro.props
+---
+
+<code class="code-highlight" id={id}><slot /></code>
+
+<style>
+    .code-highlight {
+        font-family: monospace;
+        font-weight: 700;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #3b3737;
+    }
+</style>
