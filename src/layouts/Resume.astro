@@ -1,16 +1,250 @@
 ---
 import { Icon } from "astro-icon/components"
+import Presentation from "./Presentation.astro"
+import PresentationSection from "../components/PresentationSection.astro"
+
+import CodeHighlight from "../components/CodeHighlight.astro"
 ---
 
 <div id="resume-container">
-    <div class="resume-section">
-        
-    </div>
+    <h1>Resume</h1>
+    <Presentation>
+        <PresentationSection
+            sectionTitle = "About me"
+            iconId = "fluent-color:person-available-24",
+            haloColor = "#260a4cad"
+        >
+            <div id="about-me-wrapper" class="presentation-text">
+                <div class="bullet-section">
+                    <h3>General Information</h3>
+                    <li><span class="li-label-presentation">Full name</span> : Elias A. Kirkwood</li>
+                    <li><span class="li-label-presentation">Nationality</span> : French</li>
+                    <li><span class="li-label-presentation">Citizenship</span> : French & British</li>
+                    <li><span class="li-label-presentation">Age</span> : <CodeHighlight id="currentAge">Calculating</CodeHighlight></li>
+                    <li><span class="li-label-presentation">Hobbies</span> : Coding, Movies & Reading</li>
+                </div>
+                <div id="what-people-say">
+                    <h3>What people say about me</h3>
+                    <div id="quote-card-wrapper">
+                        <div class="quote-card">
+                            <div class="actual-quote">An exceptional student. Serious, of course, but also curious, lively, relevant and highly observant. Keen to understand the few mistakes he makes. And discreet when he needs to be!</div>
+                            <div class="quote-author">— Physics teacher</div>
+                        </div>
+                        <div class="quote-card">
+
+                        </div>
+                        <div class="quote-card">
+
+                        </div>
+                    </div>
+                    <div id="dots-wrapper">
+                        <span class="dot active-dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle = "Education"
+            iconId = "fluent-color:poll-24",
+            haloColor = "#630a34ad"
+        >
+            <div id="education-wrapper" class="presentation-text">
+
+            </div>
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle = "Diplomas"
+            iconId = "fluent-color:trophy-24",
+            haloColor = "#6b2a06ad"
+        >
+            <div id="diplomas-wrapper" class="presentation-text">
+
+            </div>
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle = "Coding skills"
+            iconId = "fluent-color:code-block-24",
+            haloColor = "#3a0548ad"
+        >
+            <div id="coding-skills-wrapper" class="presentation-text">
+
+            </div>
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle = "Internship Experience"
+            iconId = "fluent-color:building-people-24",
+            haloColor = "#0a3763ad"
+        >
+            <div id="internship-wrapper" class="presentation-text">
+
+            </div>
+        </PresentationSection>
+        <PresentationSection
+            sectionTitle = "Sport"
+            iconId = "fluent-color:sport-24",
+            haloColor = "#6b0623ad"
+        >
+            <div id="sport-wrapper" class="presentation-text">
+                
+            </div>
+        </PresentationSection>
+    </Presentation>
 </div>
 
 <style>
     div#resume-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+    #resume-container h1 {
+        font-family: 'Gugi';
+        font-size: 4em;
+        color: white;
+    }
+
+    .presentation-text {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 130%;
+    }
+
+    .presentation-text li {
+        padding: 8px;
+    }
+
+    .li-label-presentation {
+        text-decoration: underline;
+        text-decoration-color: var(--goldenrod);
+    }
+
+    #about-me-wrapper {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 3%;
+    }
+
+    #what-people-say {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #what-people-say h3 {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    #quote-card-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        width: 300%;
+    }
+
+    .quote-card {
+        height: 80%;
+        margin: 10px;
+        padding: 6px;
+        border: var(--raisin) 2px solid;
+        box-sizing: border-box;
+        border-radius: 12px;
+        display: grid;
+        grid-template-rows: 4fr 1fr;
+    }
+
+    .quote-author {
+        text-align: right;
+    }
+
+    #dots-wrapper {
+        display: flex;
+    }
+
+    #dots-wrapper .dot {
+        background-color: white;
+        padding: 4px;
+        border-radius: 50px;
+        margin: 4px;
+        box-sizing: border-box;
+    }
+
+    #dots-wrapper .dot:hover {
+        cursor: pointer;
+    }
+
+    #dots-wrapper .active-dot {
+        width: 20px;
+    }
+
+</style>
+
+<style is:global>
+    #resume-container .presentation-layout {
+        margin-top: 10vh;
     }
 </style>
+
+<script>
+
+    type dateInterval = {
+        years: number
+        months: number
+        days: number
+        hours: number
+        minutes: number
+        seconds: number
+    }
+
+    function calculateDateInterval(date1: Date, date2: Date): dateInterval {
+        var result = {
+            years:  date2.getFullYear()  - date1.getFullYear(),
+            months: date2.getMonth() - date1.getMonth(),
+            days:   date2.getDate()  - date1.getDate(),
+            hours:  date2.getHours() - date1.getHours(),
+            minutes: date2.getMinutes() - date1.getMinutes(),
+            seconds: date2.getSeconds() - date1.getSeconds()
+        };
+        if (result.seconds < 0) {
+            result.minutes--;
+            result.seconds += 60;
+        }
+        if (result.minutes < 0) {
+            result.hours--;
+            result.minutes += 60;
+        }
+        if (result.hours < 0) {
+            result.days--;
+            result.hours += 24;
+        }
+        if (result.days < 0) {
+            result.months--;
+            var copy1 = new Date(date1.getTime());
+            copy1.setDate(32);
+            result.days = 32-date1.getDate()-copy1.getDate()+date2.getDate();
+        }
+        if (result.months < 0) {
+            result.years--;
+            result.months+=12;
+        }
+        return result;
+    }
+
+    async function ageMachine(element: JQuery<HTMLElement>) {
+        const birthday = new Date(1252900163000) // Mon Sep 14 2009 05:49:23 GMT+0200 CEST
+        setInterval(() => {
+            var differences = calculateDateInterval(birthday, new Date())
+            element.text(`${differences.years}y ${differences.months}m ${differences.days}d ${differences.hours}h ${differences.minutes}min ${differences.seconds}s`)
+        }, 1000);
+    }
+
+    ageMachine($("#currentAge"))
+</script>

@@ -20,9 +20,7 @@ const showButton = buttonText.length > 0;
             {buttonText && <a href={buttonHref}>{buttonText}</a>}
         </div>
     </div>
-    <div class="section-information">
-        <slot />
-    </div>
+    <slot />
 </div>
 
 <style define:vars={{ haloColor }}>
